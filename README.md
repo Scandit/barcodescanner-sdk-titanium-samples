@@ -7,8 +7,7 @@ This repository contains sample applications that show how to use the Scandit Ba
 These instructions show how the sample application can be run from the command-line. First, you will have to download the titanium module for the Scandit BarcodeScanner SDK from the [download page](https://ssl.scandit.com/account/sdk). Then execute the following commands on the command-line.
 
 ```
-cp -r extended  /tmp/extended
-cd /tmp/extended
+cd extended
 appc new --name=ExtendedSample --id=com.scandit.test --import --no-services
 appc alloy install plugin
 # asumes that the packages have been downloaded to the Downloads folder. Adjust accordingly
