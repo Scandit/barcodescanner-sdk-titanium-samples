@@ -1,0 +1,233 @@
+<Alloy>
+  <Window class="container" layout="vertical">
+
+    <TableView>
+      <TableViewSection headerTitle="Barcode Decoder Configuration">
+        <TableViewRow>
+          <Label class='info' text="EAN-13 and UPC-A" />
+          <Switch id="ean13" onChange="updateSettings" />
+        </TableViewRow>
+      	<TableViewRow>
+          <Label class='info' text="EAN-8" />
+          <Switch id="ean8" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="UPC-E" />
+          <Switch id="upce" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Two-Digit Add-On" />
+          <Switch id="two_digit_add_on" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Five-Digit Add-On" />
+          <Switch id="five_digit_add_on" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Code 11" />
+          <Switch id="code11" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Code 25" />
+          <Switch id="code25" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Code 39" />
+          <Switch id="code39" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Code 93" />
+          <Switch id="code93" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Code 128" />
+          <Switch id="code128" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Interleaved-Two-of-Five (ITF)" />
+          <Switch id="itf" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="MSI Plessey" />
+          <Switch id="msiplessey" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow onClick="msiPlesseyChecksum">
+          <Label class='info' text="MSI Plessey Checksum" />
+          <Label class='dynval' id="msiplessey_checksumvalue" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="GS1 DataBar" />
+          <Switch id="databar" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="GS1 DataBar Expanded" />
+          <Switch id="databar_expanded" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="GS1 DataBar Limited" />
+          <Switch id="databar_limited" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Codabar" />
+          <Switch id="codabar" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="QR Code" />
+          <Switch id="qr" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Color-Inverted QR Code" />
+          <Switch id="qr_inverted" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Data Matrix" />
+          <Switch id="datamatrix" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Color-Inverted Data Matrix" />
+          <Switch id="datamatrix_inverted" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="PDF417" />
+          <Switch id="pdf417" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="MicroPDF417" />
+          <Switch id="micropdf417" onChange="updateSettings" />
+        </TableViewRow>
+      	<TableViewRow>
+          <Label class='info' text="Aztec" />
+          <Switch id="aztec" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="MaxiCode" />
+          <Switch id="maxicode" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="RM4SCC" />
+          <Switch id="rm4scc" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="KIX" />
+          <Switch id="kix" onChange="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Scanning Area">
+        <TableViewRow>
+          <Label class='info' text="Restrict Scanning Area" />
+          <Switch id="restrictscanningarea" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Hotspot Height" />
+          <Label class='dynval' id="hotspotheightvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="hotspotheight" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Hotspot Y" />
+          <Label class='dynval' id="hotspotyvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="hotspoty" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Viewfinder">
+        <TableViewRow onClick="guiStyle">
+          <Label class='info' text="GUI Style" />
+          <Label class='dynval' id="guistylevalue" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Width (Portrait)" />
+          <Label class='dynval' id="viewfinderwidthportraitvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="viewfinderwidthportrait" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Height (Portrait)" />
+          <Label class='dynval' id="viewfinderheightportraitvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="viewfinderheightportrait" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Width (Landscape)" />
+          <Label class='dynval' id="viewfinderwidthlandscapevalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="viewfinderwidthlandscape" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Height (Landscape)" />
+          <Label class='dynval' id="viewfinderheightlandscapevalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="viewfinderheightlandscape" min="0" max="1" onStop="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Search Bar">
+        <TableViewRow>
+          <Label class='info' text="Search Bar" />
+          <Switch id="searchbar" onChange="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Feedback">
+        <TableViewRow>
+          <Label class='info' text="Beep" />
+          <Switch id="beep" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Vibrate" />
+          <Switch id="vibrate" onChange="updateSettings" />
+         </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Torch Button">
+        <TableViewRow>
+          <Label class='info' text="Torch Button" />
+          <Switch id="torchbutton" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Left Margin" />
+          <Label class='dynval' id="torchbuttonxvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="torchbuttonx" min="0" max="100" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Margin Top" />
+          <Label class='dynval' id="torchbuttonyvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="torchbuttony" min="0" max="100" onStop="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+
+      <TableViewSection headerTitle="Camera Switch Button">
+        <TableViewRow onClick="cameraButtonVisibility">
+          <Label class='info' text="Camera Button Visibility" />
+          <Label class='dynval' id="camerabuttonvalue" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Right Margin" />
+          <Label class='dynval' id="camerabuttonxvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="camerabuttonx" min="0" max="100" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Margin Top" />
+          <Label class='dynval' id="camerabuttonyvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="camerabuttony" min="0" max="100" onStop="updateSettings" />
+        </TableViewRow>
+      </TableViewSection>
+    </TableView>
+  </Window>
+</Alloy>
