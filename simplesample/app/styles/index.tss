@@ -1,0 +1,20 @@
+'Window': {
+}
+
+".container": {
+	layout:"vertical",
+	backgroundColor:"#f7f7f7"
+}
+
+"Label": {
+	width: Ti.UI.SIZE,
+	color: "#000000",
+	font: {
+        fontSize:'23dp'
+    }
+}
+
+"Button": {
+	width: "70%",
+//	color: "#ffffff",
+}
