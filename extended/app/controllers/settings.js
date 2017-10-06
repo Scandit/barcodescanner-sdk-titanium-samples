@@ -35,6 +35,7 @@ var camerabutton_visibilities = [
 var gui_styles = [
     'Frame', 'None'
 ]
+var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname === 'ipad');
 
 function setupSettings() {
 	for (sym in symbologies) {
@@ -140,7 +141,7 @@ function showDialog(title, options, settingId, uiValue) {
 }
 
 setupSettings();
-if (Ti.Platform.osname === 'iphone') {
+if (isIOS) {
 	var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.index});
 	var bbutton = Titanium.UI.createButton({title:'Back'});
     bbutton.addEventListener('click', function() {

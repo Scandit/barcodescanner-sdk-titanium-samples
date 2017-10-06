@@ -5,6 +5,8 @@ var sm = require('settingsmanager');
 var code = "";
 var sym = "";
 
+var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname === 'ipad');
+
 function openScanner() {
 
    var picker = scanditsdk.createView({
@@ -67,7 +69,7 @@ function openScanner() {
         picker.setScanningHotSpotHeight(sm.get('hotspotheight'));
     }
 
-    if (Ti.Platform.osname === 'iphone' && !splitscreen) {
+    if (isIOS && !splitscreen) {
     	var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.scanner});
     	var window = Titanium.UI.createWindow({  
             title:'Scandit SDK',
@@ -98,7 +100,7 @@ function openScanner() {
     		bottom:10
     	});
     	bbutton2.addEventListener('click', function() {
-    		if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
+    		if (isIOS  && !splitscreen) {
            		navwindow.close();
         	} else {
         		window.close(); 
@@ -117,7 +119,7 @@ function openScanner() {
         } else {
 	        picker.stopScanning();
 	        setTimeout(function() {
-		       	if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
+		       	if (isIOS  && !splitscreen) {
 	            	navwindow.close();
 	          	} else {
 	          		window.close(); 
@@ -131,7 +133,7 @@ function openScanner() {
     });
     picker.setCancelCallback(function(e) {
         picker.stopScanning();
-        if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
+        if (isIOS  && !splitscreen) {
            	navwindow.close();
         } else {
         	window.close(); 
@@ -154,7 +156,7 @@ function openScanner() {
             alert("success (" + sym + "): " + code);
         }
     });
-    if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
+    if (isIOS  && !splitscreen) {
        	navwindow.open();
     } else {
     	window.open(); 
