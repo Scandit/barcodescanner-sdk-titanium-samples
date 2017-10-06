@@ -65,7 +65,7 @@ function openScanner() {
         picker.setScanningHotSpotHeight(0.5);
     } else {
         picker.restrictActiveScanningArea(sm.get('restrictscanningarea'));
-        picker.setScanningHotSpot(0.5, parseFloat(sm.get('hotspoty')));
+        picker.setScanningHotSpot(parseFloat(sm.get('hotspotx')), parseFloat(sm.get('hotspoty')));
         picker.setScanningHotSpotHeight(sm.get('hotspotheight'));
     }
 

@@ -27,6 +27,7 @@ var _defaultSettings = [{
 
     'restrictscanningarea':false,
     'hotspotheight':0.25,
+    'hotspotx':0.5,
     'hotspoty':0.5,
 
     'guistyle':0,

@@ -115,7 +115,14 @@
           <Label class='dynval' id="hotspotheightvalue" />
         </TableViewRow>
         <TableViewRow height='80dp'>
-          <Slider id="hotspotheight" min="0" max="1" onStop="updateSettings" />
+          <Slider id="hotspotheight" min="0" max="0.5" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Hotspot X" />
+          <Label class='dynval' id="hotspotxvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="hotspotx" min="0" max="1" onStop="updateSettings" />
         </TableViewRow>
         <TableViewRow>
           <Label class='info' text="Hotspot Y" />

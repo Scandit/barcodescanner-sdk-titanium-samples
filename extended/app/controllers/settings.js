@@ -45,6 +45,7 @@ function setupSettings() {
 
     $.restrictscanningarea.value = sm.get('restrictscanningarea').toString();
     setupSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+    setupSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     setupSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
     $.guistylevalue.text = gui_styles[sm.get('guistyle')];
@@ -69,7 +70,7 @@ function setupSettings() {
 }
 
 function setupSliderSetting(settingId, uiSlider, uiValue, decimals) {
-    uiSlider.value = sm.get(settingId).toString();
+    uiSlider.value = sm.get(settingId);
     uiValue.text = sm.get(settingId).toFixed(decimals);
 }
 
@@ -84,6 +85,7 @@ function updateSettings() {
 
     sm.set('restrictscanningarea', JSON.parse($.restrictscanningarea.value));
     updateSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+    updateSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     updateSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
     updateSliderSetting('viewfinderwidthportrait', $.viewfinderwidthportrait, $.viewfinderwidthportraitvalue, 2);
