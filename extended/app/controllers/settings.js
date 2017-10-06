@@ -1,12 +1,12 @@
 var sm = require('settingsmanager');
 var ready = false;
 var symbologies = {
-	'ean8': $.ean8,
-	'ean13': $.ean13,
-	'upce': $.upce,
-	'code11': $.code11,
-	'code25': $.code25,
-	'code39': $.code39,
+    'ean8': $.ean8,
+    'ean13': $.ean13,
+    'upce': $.upce,
+    'code11': $.code11,
+    'code25': $.code25,
+    'code39': $.code39,
     'code93': $.code93,
     'code128': $.code128,
     'codabar': $.codabar,
@@ -38,9 +38,9 @@ var gui_styles = [
 var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname === 'ipad');
 
 function setupSettings() {
-	for (sym in symbologies) {
-		symbologies[sym].value = sm.get(sym).toString();
-	}
+    for (sym in symbologies) {
+        symbologies[sym].value = sm.get(sym).toString();
+    }
     $.msiplessey_checksumvalue.text = msiplessey_checksums[sm.get('msiplessey_checksum')];
 
     $.restrictscanningarea.value = sm.get('restrictscanningarea').toString();
@@ -80,8 +80,8 @@ function updateSettings() {
     }
 
     for (sym in symbologies) {
-    	sm.set(sym, JSON.parse(symbologies[sym].value));
-	}
+        sm.set(sym, JSON.parse(symbologies[sym].value));
+    }
 
     sm.set('restrictscanningarea', JSON.parse($.restrictscanningarea.value));
     updateSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
@@ -144,15 +144,15 @@ function showDialog(title, options, settingId, uiValue) {
 
 setupSettings();
 if (isIOS) {
-	var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.index});
-	var bbutton = Titanium.UI.createButton({title:'Back'});
+    var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.index});
+    var bbutton = Titanium.UI.createButton({title:'Back'});
     bbutton.addEventListener('click', function() {
-    	navwindow.close();
-    	$.settings.close();
-	});
+        navwindow.close();
+        $.settings.close();
+    });
     $.settings.setLeftNavButtons([bbutton]);
     navwindow.setWindow($.settings);
     navwindow.open();
 } else {
-	$.settings.open();
+    $.settings.open();
 }

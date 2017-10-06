@@ -1,8 +1,8 @@
 <Alloy>
-	<Window class="container">
-		<Label top="40%">Scandit Titanium Demo App</Label>
+    <Window class="container">
+        <Label top="40%">Scandit Titanium Demo App</Label>
         <Button title="Full Screen Picker" onClick="fullscreen" />
         <Button title="Half Screen Picker" onClick="halfscreen" />
         <Button title="Settings" onClick="settings" />
-	</Window>
+    </Window>
 </Alloy>

@@ -7,7 +7,7 @@
           <Label class='info' text="EAN-13 and UPC-A" />
           <Switch id="ean13" onChange="updateSettings" />
         </TableViewRow>
-      	<TableViewRow>
+          <TableViewRow>
           <Label class='info' text="EAN-8" />
           <Switch id="ean8" onChange="updateSettings" />
         </TableViewRow>
@@ -87,7 +87,7 @@
           <Label class='info' text="MicroPDF417" />
           <Switch id="micropdf417" onChange="updateSettings" />
         </TableViewRow>
-      	<TableViewRow>
+        <TableViewRow>
           <Label class='info' text="Aztec" />
           <Switch id="aztec" onChange="updateSettings" />
         </TableViewRow>
