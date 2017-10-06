@@ -24,7 +24,8 @@ var symbologies = {
     'datamatrix_inverted': $.datamatrix_inverted,
     'aztec': $.aztec,
     'kix': $.kix,
-    'rm4scc': $.rm4scc
+    'rm4scc': $.rm4scc,
+    'dotcode': $.dotcode
 };
 var msiplessey_checksums = [
     'None', 'Mod 10', 'Mod 11', 'Mod 1010', 'Mod 1110'

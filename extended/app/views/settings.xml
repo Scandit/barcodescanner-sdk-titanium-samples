@@ -103,6 +103,10 @@
           <Label class='info' text="KIX" />
           <Switch id="kix" onChange="updateSettings" />
         </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="DotCode" />
+          <Switch id="dotcode" onChange="updateSettings" />
+        </TableViewRow>
       </TableViewSection>
 
       <TableViewSection headerTitle="Scanning Area">

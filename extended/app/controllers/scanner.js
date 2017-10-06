@@ -35,6 +35,7 @@ function openScanner() {
     picker.setKIXEnabled(sm.get('kix'));
     picker.setRM4SCCEnabled(sm.get('rm4scc'));
     picker.setAztecEnabled(sm.get('aztec'));
+    picker.setDotCodeEnabled(sm.get('dotcode'));
     picker.setGS1DataBarEnabled(sm.get('databar'));
     picker.setGS1DataBarExpandedEnabled(sm.get('databar_expanded'));
     picker.setGS1DataBarLimitedEnabled(sm.get('databar_limited'));

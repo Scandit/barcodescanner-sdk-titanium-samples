@@ -23,6 +23,7 @@ var _defaultSettings = [{
     'databar_limited':false,
     'kix':false,
     'rm4scc':false,
+    'dotcode':false,
     'msiplessey_checksum':1,
 
     'restrictscanningarea':false,
