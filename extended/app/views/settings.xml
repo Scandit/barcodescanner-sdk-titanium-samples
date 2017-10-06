@@ -16,14 +16,6 @@
           <Switch id="upce" onChange="updateSettings" />
         </TableViewRow>
         <TableViewRow>
-          <Label class='info' text="Two-Digit Add-On" />
-          <Switch id="two_digit_add_on" onChange="updateSettings" />
-        </TableViewRow>
-        <TableViewRow>
-          <Label class='info' text="Five-Digit Add-On" />
-          <Switch id="five_digit_add_on" onChange="updateSettings" />
-        </TableViewRow>
-        <TableViewRow>
           <Label class='info' text="Code 11" />
           <Switch id="code11" onChange="updateSettings" />
         </TableViewRow>
