@@ -5,6 +5,8 @@ var sm = require('settingsmanager');
 var code = "";
 var sym = "";
 
+var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname === 'ipad');
+
 function openScanner() {
 
    var picker = scanditsdk.createView({
@@ -27,15 +29,16 @@ function openScanner() {
     picker.setMaxiCodeEnabled(sm.get('maxicode'));
     picker.setDataMatrixEnabled(sm.get('datamatrix'));
     picker.setCodabarEnabled(sm.get('codabar'));
-	picker.setQrEnabled(sm.get('qr'));
-	picker.setPdf417Enabled(sm.get('pdf417'));
-	picker.setMicroPdf417Enabled(sm.get('micropdf417'));
-	picker.setKIXEnabled(sm.get('kix'));
-	picker.setRM4SCCEnabled(sm.get('rm4scc'));
-	picker.setAztecEnabled(sm.get('aztec'));
-	picker.setGS1DataBarEnabled(sm.get('databar'));
-	picker.setGS1DataBarExpandedEnabled(sm.get('databar_expanded'));
-	picker.setGS1DataBarLimitedEnabled(sm.get('databar_limited'));
+    picker.setQrEnabled(sm.get('qr'));
+    picker.setPdf417Enabled(sm.get('pdf417'));
+    picker.setMicroPdf417Enabled(sm.get('micropdf417'));
+    picker.setKIXEnabled(sm.get('kix'));
+    picker.setRM4SCCEnabled(sm.get('rm4scc'));
+    picker.setAztecEnabled(sm.get('aztec'));
+    picker.setDotCodeEnabled(sm.get('dotcode'));
+    picker.setGS1DataBarEnabled(sm.get('databar'));
+    picker.setGS1DataBarExpandedEnabled(sm.get('databar_expanded'));
+    picker.setGS1DataBarLimitedEnabled(sm.get('databar_limited'));
     picker.setBeepEnabled(sm.get('beep'));
     picker.setVibrateEnabled(sm.get('vibrate'));
     picker.setTorchEnabled(sm.get('torchbutton'));
@@ -63,88 +66,88 @@ function openScanner() {
         picker.setScanningHotSpotHeight(0.5);
     } else {
         picker.restrictActiveScanningArea(sm.get('restrictscanningarea'));
-        picker.setScanningHotSpot(0.5, parseFloat(sm.get('hotspoty')));
+        picker.setScanningHotSpot(parseFloat(sm.get('hotspotx')), parseFloat(sm.get('hotspoty')));
         picker.setScanningHotSpotHeight(sm.get('hotspotheight'));
     }
 
-    if (Ti.Platform.osname === 'iphone' && !splitscreen) {
-    	var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.scanner});
-    	var window = Titanium.UI.createWindow({  
+    if (isIOS && !splitscreen) {
+        var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.scanner});
+        var window = Titanium.UI.createWindow({  
             title:'Scandit SDK',
             navBarHidden:false,
-   		});
-    	var bbutton = Titanium.UI.createButton({title:'Back'});
-    	bbutton.addEventListener('click', function() {
-    		navwindow.close();
-    		window.remove(picker);
-    		$.scanner.close();
-		});
-    	window.setLeftNavButtons([bbutton]);
-    	navwindow.setWindow(window);
+           });
+        var bbutton = Titanium.UI.createButton({title:'Back'});
+        bbutton.addEventListener('click', function() {
+            navwindow.close();
+            window.remove(picker);
+            $.scanner.close();
+        });
+        window.setLeftNavButtons([bbutton]);
+        navwindow.setWindow(window);
     } else {
-    	var window = Titanium.UI.createWindow({  
+        var window = Titanium.UI.createWindow({  
             title:'Scandit SDK',
             navBarHidden:true,
-    	});
+        });
     }
     
     if (splitscreen) {
-    	var scanlabel = Titanium.UI.createLabel({
-    		text:'',
-    		bottom:50
-    	});
-    	var bbutton2 = Titanium.UI.createButton({
-    		title:'Return to Menu',
-    		bottom:10
-    	});
-    	bbutton2.addEventListener('click', function() {
-    		if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
-           		navwindow.close();
-        	} else {
-        		window.close(); 
-        	}
-    		window.remove(picker);
-    		$.scanner.close();
-		});
-    	window.add(scanlabel);
-    	window.add(bbutton2);
+        var scanlabel = Titanium.UI.createLabel({
+            text:'',
+            bottom:50
+        });
+        var bbutton2 = Titanium.UI.createButton({
+            title:'Return to Menu',
+            bottom:10
+        });
+        bbutton2.addEventListener('click', function() {
+            if (isIOS  && !splitscreen) {
+                   navwindow.close();
+            } else {
+                window.close(); 
+            }
+            window.remove(picker);
+            $.scanner.close();
+        });
+        window.add(scanlabel);
+        window.add(bbutton2);
     }
     
     picker.setSuccessCallback(function(e) {
-    	
-    	if (splitscreen) {
-        	scanlabel.text = 'Scanned Code (' + e.symbology + '): ' + e.barcode;
+        
+        if (splitscreen) {
+            scanlabel.text = 'Scanned Code (' + e.symbology + '): ' + e.barcode;
         } else {
-	        picker.stopScanning();
-	        setTimeout(function() {
-		       	if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
-	            	navwindow.close();
-	          	} else {
-	          		window.close(); 
-	          	}
-	            window.remove(picker);
-	            code = e.barcode;
-	            sym = e.symbology;
-	        }, 1);
-		}
+            picker.stopScanning();
+            setTimeout(function() {
+                   if (isIOS  && !splitscreen) {
+                    navwindow.close();
+                  } else {
+                      window.close(); 
+                  }
+                window.remove(picker);
+                code = e.barcode;
+                sym = e.symbology;
+            }, 1);
+        }
 
     });
     picker.setCancelCallback(function(e) {
         picker.stopScanning();
-        if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
-           	navwindow.close();
+        if (isIOS  && !splitscreen) {
+               navwindow.close();
         } else {
-        	window.close(); 
+            window.close(); 
         }
         window.remove(picker);
     });
 
     window.add(picker);
     window.addEventListener('open', function(e) {
-    	if (typeof window.activity !== "undefined"
-    		&& typeof window.activity.actionBar !== "undefined") {
-    		// Hide the action bar on android
-        	window.activity.actionBar.hide();
+        if (typeof window.activity !== "undefined"
+            && typeof window.activity.actionBar !== "undefined") {
+            // Hide the action bar on android
+            window.activity.actionBar.hide();
         }
         picker.startScanning();
     });
@@ -154,10 +157,10 @@ function openScanner() {
             alert("success (" + sym + "): " + code);
         }
     });
-    if (Ti.Platform.osname === 'iphone'  && !splitscreen) {
-       	navwindow.open();
+    if (isIOS  && !splitscreen) {
+           navwindow.open();
     } else {
-    	window.open(); 
+        window.open(); 
     }
 }
 

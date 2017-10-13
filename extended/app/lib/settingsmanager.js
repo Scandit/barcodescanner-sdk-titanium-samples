@@ -23,10 +23,12 @@ var _defaultSettings = [{
     'databar_limited':false,
     'kix':false,
     'rm4scc':false,
+    'dotcode':false,
     'msiplessey_checksum':1,
 
     'restrictscanningarea':false,
     'hotspotheight':0.25,
+    'hotspotx':0.5,
     'hotspoty':0.5,
 
     'guistyle':0,

@@ -12,7 +12,7 @@ function halfscreen() {
 
 function openScanner() {
     if (Ti.Media.hasCameraPermissions === undefined ||
-    	Ti.Media.hasCameraPermissions()) {
+        Ti.Media.hasCameraPermissions()) {
         Alloy.createController("scanner");
     } else {
         Ti.Media.requestCameraPermissions(function(e) {

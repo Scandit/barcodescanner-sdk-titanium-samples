@@ -1,12 +1,12 @@
 var sm = require('settingsmanager');
 var ready = false;
 var symbologies = {
-	'ean8': $.ean8,
-	'ean13': $.ean13,
-	'upce': $.upce,
-	'code11': $.code11,
-	'code25': $.code25,
-	'code39': $.code39,
+    'ean8': $.ean8,
+    'ean13': $.ean13,
+    'upce': $.upce,
+    'code11': $.code11,
+    'code25': $.code25,
+    'code39': $.code39,
     'code93': $.code93,
     'code128': $.code128,
     'codabar': $.codabar,
@@ -24,7 +24,8 @@ var symbologies = {
     'datamatrix_inverted': $.datamatrix_inverted,
     'aztec': $.aztec,
     'kix': $.kix,
-    'rm4scc': $.rm4scc
+    'rm4scc': $.rm4scc,
+    'dotcode': $.dotcode
 };
 var msiplessey_checksums = [
     'None', 'Mod 10', 'Mod 11', 'Mod 1010', 'Mod 1110'
@@ -35,15 +36,17 @@ var camerabutton_visibilities = [
 var gui_styles = [
     'Frame', 'None'
 ]
+var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname === 'ipad');
 
 function setupSettings() {
-	for (sym in symbologies) {
-		symbologies[sym].value = sm.get(sym).toString();
-	}
+    for (sym in symbologies) {
+        symbologies[sym].value = sm.get(sym).toString();
+    }
     $.msiplessey_checksumvalue.text = msiplessey_checksums[sm.get('msiplessey_checksum')];
 
     $.restrictscanningarea.value = sm.get('restrictscanningarea').toString();
     setupSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+    setupSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     setupSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
     $.guistylevalue.text = gui_styles[sm.get('guistyle')];
@@ -68,7 +71,7 @@ function setupSettings() {
 }
 
 function setupSliderSetting(settingId, uiSlider, uiValue, decimals) {
-    uiSlider.value = sm.get(settingId).toString();
+    uiSlider.value = sm.get(settingId);
     uiValue.text = sm.get(settingId).toFixed(decimals);
 }
 
@@ -78,11 +81,12 @@ function updateSettings() {
     }
 
     for (sym in symbologies) {
-    	sm.set(sym, JSON.parse(symbologies[sym].value));
-	}
+        sm.set(sym, JSON.parse(symbologies[sym].value));
+    }
 
     sm.set('restrictscanningarea', JSON.parse($.restrictscanningarea.value));
     updateSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+    updateSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     updateSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
     updateSliderSetting('viewfinderwidthportrait', $.viewfinderwidthportrait, $.viewfinderwidthportraitvalue, 2);
@@ -140,16 +144,16 @@ function showDialog(title, options, settingId, uiValue) {
 }
 
 setupSettings();
-if (Ti.Platform.osname === 'iphone') {
-	var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.index});
-	var bbutton = Titanium.UI.createButton({title:'Back'});
+if (isIOS) {
+    var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.index});
+    var bbutton = Titanium.UI.createButton({title:'Back'});
     bbutton.addEventListener('click', function() {
-    	navwindow.close();
-    	$.settings.close();
-	});
+        navwindow.close();
+        $.settings.close();
+    });
     $.settings.setLeftNavButtons([bbutton]);
     navwindow.setWindow($.settings);
     navwindow.open();
 } else {
-	$.settings.open();
+    $.settings.open();
 }

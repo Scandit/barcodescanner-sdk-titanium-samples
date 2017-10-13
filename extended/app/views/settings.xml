@@ -7,21 +7,13 @@
           <Label class='info' text="EAN-13 and UPC-A" />
           <Switch id="ean13" onChange="updateSettings" />
         </TableViewRow>
-      	<TableViewRow>
+          <TableViewRow>
           <Label class='info' text="EAN-8" />
           <Switch id="ean8" onChange="updateSettings" />
         </TableViewRow>
         <TableViewRow>
           <Label class='info' text="UPC-E" />
           <Switch id="upce" onChange="updateSettings" />
-        </TableViewRow>
-        <TableViewRow>
-          <Label class='info' text="Two-Digit Add-On" />
-          <Switch id="two_digit_add_on" onChange="updateSettings" />
-        </TableViewRow>
-        <TableViewRow>
-          <Label class='info' text="Five-Digit Add-On" />
-          <Switch id="five_digit_add_on" onChange="updateSettings" />
         </TableViewRow>
         <TableViewRow>
           <Label class='info' text="Code 11" />
@@ -95,7 +87,7 @@
           <Label class='info' text="MicroPDF417" />
           <Switch id="micropdf417" onChange="updateSettings" />
         </TableViewRow>
-      	<TableViewRow>
+        <TableViewRow>
           <Label class='info' text="Aztec" />
           <Switch id="aztec" onChange="updateSettings" />
         </TableViewRow>
@@ -111,6 +103,10 @@
           <Label class='info' text="KIX" />
           <Switch id="kix" onChange="updateSettings" />
         </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="DotCode" />
+          <Switch id="dotcode" onChange="updateSettings" />
+        </TableViewRow>
       </TableViewSection>
 
       <TableViewSection headerTitle="Scanning Area">
@@ -123,7 +119,14 @@
           <Label class='dynval' id="hotspotheightvalue" />
         </TableViewRow>
         <TableViewRow height='80dp'>
-          <Slider id="hotspotheight" min="0" max="1" onStop="updateSettings" />
+          <Slider id="hotspotheight" min="0" max="0.5" onStop="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
+          <Label class='info' text="Hotspot X" />
+          <Label class='dynval' id="hotspotxvalue" />
+        </TableViewRow>
+        <TableViewRow height='80dp'>
+          <Slider id="hotspotx" min="0" max="1" onStop="updateSettings" />
         </TableViewRow>
         <TableViewRow>
           <Label class='info' text="Hotspot Y" />
