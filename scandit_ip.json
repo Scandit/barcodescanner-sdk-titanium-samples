@@ -1,0 +1,9 @@
+{
+    "name": "SDK Titanium Samples",
+    "owner": ["moritz@scandit.com"],
+    "distribution": "SOURCE",
+    "packages": [],
+    "ignored_packages": [],
+    "overrides": [],
+    "whitelist": []
+}
