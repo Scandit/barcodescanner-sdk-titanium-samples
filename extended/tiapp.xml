@@ -4,8 +4,8 @@
     <name>Extended Sample</name>
     <version>1.0</version>
     <publisher>Scandit AG</publisher>
-    <url/>
-    <description/>
+    <url />
+    <description />
     <copyright>2016-2017 Scandit AG</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
@@ -30,11 +30,11 @@
                     <string>UIInterfaceOrientationLandscapeRight</string>
                 </array>
                 <key>UIRequiresPersistentWiFi</key>
-                <false/>
+                <false />
                 <key>UIPrerenderedIcon</key>
-                <false/>
+                <false />
                 <key>UIStatusBarHidden</key>
-                <false/>
+                <false />
                 <key>UIStatusBarStyle</key>
                 <string>UIStatusBarStyleDefault</string>
                 <key>NSCameraUsageDescription</key>
@@ -42,9 +42,9 @@
             </dict>
         </plist>
     </ios>
-    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <android></android>
     <mobileweb>
-        <precache/>
+        <precache />
         <splash>
             <enabled>true</enabled>
             <inline-css-images>true</inline-css-images>
@@ -52,8 +52,8 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-         <module platform="iphone">com.mirasense.scanditsdk</module>
-         <module platform="android">com.mirasense.scanditsdk</module>
+        <module platform="iphone">com.mirasense.scanditsdk</module>
+        <module platform="android">com.mirasense.scanditsdk</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -62,9 +62,10 @@
         <target device="mobileweb">false</target>
         <target device="windows">false</target>
     </deployment-targets>
-    <sdk-version>6.0.0.GA</sdk-version>
+    <sdk-version>7.0.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <property name="appc-app-id" type="string">57c6a1f671a6f7973ebb5023</property>
+    <property name="appc-app-id" type="string">5a70642e7db61959d88a7e0c</property>
+    <guid>9f2f4c20-4b0c-4edf-9777-6652246b7077</guid>
 </ti:app>

@@ -26,7 +26,7 @@
 var scanditsdk = require("com.mirasense.scanditsdk");
 // disable the status bar for the camera view on the iphone and ipad
 if(Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad'){
-    Titanium.UI.iPhone.statusBarHidden = true;
+    Titanium.UI.iOS.statusBarHidden = true;
 }
 var openScannerIfPermission = function() {
     if (Ti.Media.hasCameraPermissions()) {
