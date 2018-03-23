@@ -1,5 +1,5 @@
 var scanditsdk = require('com.mirasense.scanditsdk');
-scanditsdk.appKey = '--- ENTER YOUR SCANDIT APP KEY HERE ---';
+scanditsdk.appKey = '--- ENTER YOUR SCANDIT LICENSE KEY HERE ---';
 scanditsdk.cameraFacingPreference = 0;
 var sm = require('settingsmanager');
 var code = "";
@@ -14,7 +14,7 @@ function openScanner() {
         height:Ti.App.Properties.getString('height')
     });
     picker.init();
-    
+
     picker.setEan13AndUpc12Enabled(sm.get('ean13'));
     picker.setEan8Enabled(sm.get('ean8'));
     picker.setUpceEnabled(sm.get('upce'));
@@ -55,7 +55,7 @@ function openScanner() {
         sm.get('viewfinderwidthlandscape'), sm.get('viewfinderheightlandscape'));
 
     picker.showSearchBar(sm.get('searchbar'));
-    
+
     var splitscreen = (Ti.App.Properties.getString('height') !== "100%");
 
     // If the active scanning area is bigger than the camera preview we set it to the
@@ -72,7 +72,7 @@ function openScanner() {
 
     if (isIOS && !splitscreen) {
         var navwindow = Titanium.UI.iOS.createNavigationWindow({window:$.scanner});
-        var window = Titanium.UI.createWindow({  
+        var window = Titanium.UI.createWindow({
             title:'Scandit SDK',
             navBarHidden:false,
            });
@@ -85,12 +85,12 @@ function openScanner() {
         window.setLeftNavButtons([bbutton]);
         navwindow.setWindow(window);
     } else {
-        var window = Titanium.UI.createWindow({  
+        var window = Titanium.UI.createWindow({
             title:'Scandit SDK',
             navBarHidden:true,
         });
     }
-    
+
     if (splitscreen) {
         var scanlabel = Titanium.UI.createLabel({
             text:'',
@@ -104,7 +104,7 @@ function openScanner() {
             if (isIOS  && !splitscreen) {
                    navwindow.close();
             } else {
-                window.close(); 
+                window.close();
             }
             window.remove(picker);
             $.scanner.close();
@@ -112,9 +112,9 @@ function openScanner() {
         window.add(scanlabel);
         window.add(bbutton2);
     }
-    
+
     picker.setSuccessCallback(function(e) {
-        
+
         if (splitscreen) {
             scanlabel.text = 'Scanned Code (' + e.symbology + '): ' + e.barcode;
         } else {
@@ -123,7 +123,7 @@ function openScanner() {
                    if (isIOS  && !splitscreen) {
                     navwindow.close();
                   } else {
-                      window.close(); 
+                      window.close();
                   }
                 window.remove(picker);
                 code = e.barcode;
@@ -137,7 +137,7 @@ function openScanner() {
         if (isIOS  && !splitscreen) {
                navwindow.close();
         } else {
-            window.close(); 
+            window.close();
         }
         window.remove(picker);
     });
@@ -160,7 +160,7 @@ function openScanner() {
     if (isIOS  && !splitscreen) {
            navwindow.open();
     } else {
-        window.open(); 
+        window.open();
     }
 }
 
