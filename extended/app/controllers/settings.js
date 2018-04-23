@@ -45,7 +45,11 @@ function setupSettings() {
     $.msiplessey_checksumvalue.text = msiplessey_checksums[sm.get('msiplessey_checksum')];
 
     $.restrictscanningarea.value = sm.get('restrictscanningarea').toString();
-    setupSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+
+    // XXX Android slider only allows integers to be set as the min/max parameters, while we need
+    // the hotspot height slider to range from 0 to 0.5. Therefore, the slider's max is actually set
+    // 5 (checkout settings.xml file) and under the hood we convert the value to our actual range.
+    setupHotspotHeightSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
     setupSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     setupSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
@@ -75,6 +79,11 @@ function setupSliderSetting(settingId, uiSlider, uiValue, decimals) {
     uiValue.text = sm.get(settingId).toFixed(decimals);
 }
 
+function setupHotspotHeightSliderSetting(settingId, uiSlider, uiValue, decimals) {
+    uiSlider.value = sm.get(settingId) * 10;
+    uiValue.text = sm.get(settingId).toFixed(decimals);
+}
+
 function updateSettings() {
     if (!ready) {
         return;
@@ -85,7 +94,11 @@ function updateSettings() {
     }
 
     sm.set('restrictscanningarea', JSON.parse($.restrictscanningarea.value));
-    updateSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
+
+    // XXX Android slider only allows integers to be set as the min/max parameters, while we need
+    // the hotspot height slider to range from 0 to 0.5. Therefore, the slider's max is actually set
+    // 5 (checkout settings.xml file) and under the hood we convert the value to our actual range.
+    updateHotspotHeightSliderSetting('hotspotheight', $.hotspotheight, $.hotspotheightvalue, 2);
     updateSliderSetting('hotspotx', $.hotspotx, $.hotspotxvalue, 2);
     updateSliderSetting('hotspoty', $.hotspoty, $.hotspotyvalue, 2);
 
@@ -110,6 +123,12 @@ function updateSettings() {
 function updateSliderSetting(settingId, uiSlider, uiValue, decimals) {
     sm.set(settingId, parseFloat(uiSlider.value));
     uiValue.text = parseFloat(uiSlider.value).toFixed(decimals);
+}
+
+function updateHotspotHeightSliderSetting(settingId, uiSlider, uiValue, decimals) {
+    var actualHotspotHeightValue = uiSlider.value / 10;
+    sm.set(settingId, parseFloat(actualHotspotHeightValue));
+    uiValue.text = parseFloat(actualHotspotHeightValue).toFixed(decimals);
 }
 
 function msiPlesseyChecksum() {
