@@ -65,9 +65,12 @@ function openScanner() {
         picker.setScanningHotSpot(0.5, 0.5);
         picker.setScanningHotSpotHeight(0.5);
     } else {
-        picker.restrictActiveScanningArea(sm.get('restrictscanningarea'));
         picker.setScanningHotSpot(parseFloat(sm.get('hotspotx')), parseFloat(sm.get('hotspoty')));
         picker.setScanningHotSpotHeight(sm.get('hotspotheight'));
+        // Restricting Active Scanning Area has to be done after setting scanning HotSpot height,
+        // because on iOS the setScanningHotSpot method internally enables the active scanning area
+        // (by setting activeScanningAreaPortrait and activeScanningAreaLandscape properties).
+        picker.restrictActiveScanningArea(sm.get('restrictscanningarea'));
     }
 
     if (isIOS && !splitscreen) {
