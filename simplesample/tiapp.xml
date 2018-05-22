@@ -62,10 +62,10 @@
         <target device="mobileweb">false</target>
         <target device="windows">false</target>
     </deployment-targets>
-    <sdk-version>7.0.0.GA</sdk-version>
+    <sdk-version>7.0.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <property name="appc-app-id" type="string">59d7a16a65523356fc939afa</property>
-    <guid>16f9cc5d-b989-4631-9000-0841e725d4d9</guid>
+    <property name="appc-app-id" type="string">5a7028137db61959d88a78f7</property>
+    <guid>9f2f4c20-4b0c-4edf-9777-6652246b7077</guid>
 </ti:app>
