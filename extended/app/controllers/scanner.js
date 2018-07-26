@@ -20,6 +20,7 @@ function openScanner() {
     picker.setUpceEnabled(sm.get('upce'));
     picker.setCode11Enabled(sm.get('code11'));
     picker.setCode25Enabled(sm.get('code25'));
+    picker.setCode32Enabled(sm.get('code32'));
     picker.setCode39Enabled(sm.get('code39'));
     picker.setCode93Enabled(sm.get('code93'));
     picker.setCode128Enabled(sm.get('code128'));

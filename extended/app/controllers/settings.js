@@ -6,6 +6,7 @@ var symbologies = {
     'upce': $.upce,
     'code11': $.code11,
     'code25': $.code25,
+    'code32': $.code32,
     'code39': $.code39,
     'code93': $.code93,
     'code128': $.code128,
