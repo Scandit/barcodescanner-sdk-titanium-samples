@@ -24,6 +24,10 @@
           <Switch id="code25" onChange="updateSettings" />
         </TableViewRow>
         <TableViewRow>
+          <Label class='info' text="Code 32" />
+          <Switch id="code32" onChange="updateSettings" />
+        </TableViewRow>
+        <TableViewRow>
           <Label class='info' text="Code 39" />
           <Switch id="code39" onChange="updateSettings" />
         </TableViewRow>
