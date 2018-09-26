@@ -4,6 +4,7 @@ var _defaultSettings = [{
     'upce':true,
     'code11':false,
     'code25':false,
+    'code32':false,
     'code39':true,
     'code93':false,
     'code128':true,

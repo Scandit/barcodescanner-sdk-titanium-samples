@@ -9,7 +9,7 @@ var isIOS = (Titanium.Platform.osname === 'iphone' || Titanium.Platform.osname =
 
 function openScanner() {
 
-   var picker = scanditsdk.createView({
+    var picker = scanditsdk.createView({
         width:Ti.App.Properties.getString('width'),
         height:Ti.App.Properties.getString('height')
     });
