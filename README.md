@@ -1,6 +1,6 @@
 # Scandit Samples for Titanium
 
-This repository contains sample applications that show how to use the Scandit Barcode Scanner SDK together with Titanium. At the moment, one sample application is available.
+This repository contains sample applications that show how to use the Scandit Barcode Scanner SDK together with Titanium.
 
 ## Running and Building the Samples from the Command-Line
 
