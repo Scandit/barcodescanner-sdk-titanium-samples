@@ -10,7 +10,7 @@ These instructions show how the sample application can be run from the command-l
 cd extended
 appc new --name=ExtendedSample --id=com.scandit.test --import --no-services
 appc alloy install plugin
-# asumes that the packages have been downloaded to the Downloads folder. Adjust accordingly
+# Assumes that the packages have been downloaded to the Downloads folder. Adjust accordingly.
 unzip ~/Downloads/scandit-barcodescanner-titanium*.zip
 appc run --platform=android --target=device
 ```
